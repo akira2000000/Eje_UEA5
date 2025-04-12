@@ -2,9 +2,9 @@
 Proyecto del Eje Interador UEA-5 
 
 ## Integrantes
-Camila Díaz Pavon
-Esperanza Estefanía Hernández Díaz
-Aline Lara Garcia
+Camila Díaz Pavon  
+Esperanza Estefanía Hernández Díaz  
+Aline Lara Garcia  
 Angélica Trejo Gálvez
 
 ## Resumen

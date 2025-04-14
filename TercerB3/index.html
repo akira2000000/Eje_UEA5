@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respira y Sigue</title>
+    <style>
+        body {
+            background-image: url('assets/31.png'); /* Cambia la URL por tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .imagen {
+            width: 250px;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            position: absolute;
+        }
+
+        #miEnlace {
+            display: none;
+            font-size: 20px;
+            color: cyan;
+            text-decoration: none;
+            position: absolute;
+            top: 400px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Opcional: Estilos para la imagen del enlace */
+        #miEnlace img {
+            width: 150px;
+            transition: transform 0.3s;
+        }
+        #miEnlace img:hover {
+            transform: scale(1.1);
+        }
+
+        /*Audio*/
+        audio {
+            display: none; /* Oculta el reproductor de audio */
+        }
+    </style>
+</head>
+<body>
+
+      <!--Sonido del vagon llegando-->
+    <audio id="background-audio" autoplay loop muted>
+        <source src="assets/audiometro3.mp3" type="audio/mpeg">
+    </audio>
+
+    <img id="img1" class="imagen" src="assets/dialogo.png" alt="Imagen 1">
+    <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
+    <img id="img3" class="imagen" src="assets/dialogo3.png" alt="Imagen 3">
+
+     <!-- Enlace convertido en imagen -->
+     <a id="miEnlace" href="../TercerB4/index.html">
+        <img src="assets/link.png" alt="Ir al sitio">
+    </a>
+
+    <script>
+        function fadeInOut(id, x, y, delayAppear, delayDisappear) {
+            let img = document.getElementById(id);
+            img.style.left = x + "px";
+            img.style.top = y + "px";
+
+            setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
+            setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
+        }
+
+        fadeInOut("img1", 100, 100, 500, 2000);  
+        fadeInOut("img2", 500, 300, 1000, 3000);
+        fadeInOut("img3", 900, 500, 1500, 4000);
+
+        // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
+        setTimeout(() => {
+            document.getElementById("miEnlace").style.display = "inline";
+        }, 6000);  
+
+        document.addEventListener("click", () => {
+            const audio = document.getElementById("background-audio");
+            audio.muted = false; // Quitar el muteo después de la interacción
+            audio.play();
+        }, { once: true });
+    
+    </script>
+
+</body>
+</html>

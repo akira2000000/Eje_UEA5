@@ -1,0 +1,76 @@
+/* Reset de márgenes y ocultar el scroll vertical */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  /* Contenedor principal */
+  .scrolling-row {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Contenedor de las imágenes */
+  .scrollable {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    width: 100vw;
+    height: 100vh;
+    white-space: nowrap;
+    scrollbar-width: none;
+    cursor: grab;
+  }
+  
+  /* Oculta la barra de desplazamiento en Chrome y Edge */
+  .scrollable::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Imágenes que ocupan toda la pantalla */
+  .scrolling-image {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    user-select: none;
+  }
+  
+  /*Link*/
+  
+  #enlace-inicio, #enlace-final {
+    position: fixed;
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 5px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+  }
+
+  #enlace-inicio {
+    left: 20px;
+  }
+
+  #enlace-final {
+    right: 20px;
+    display: none;
+  }
+
+  #enlace-inicio img, #enlace-final img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  
+  /*Audio*/
+  audio {
+    display: none; /* Oculta el reproductor de audio */
+  }

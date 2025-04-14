@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respira y Sigue</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Enlace de inicio -->
+  <a id="enlace-inicio" href="https://www.ejemplo.com/inicio" target="_blank">
+    <img src="https://source.unsplash.com/50x50/?home" alt="Inicio">
+  </a>
+
+  <!-- Enlace de final -->
+  <a id="enlace-final" href="https://www.ejemplo.com/final" target="_blank">
+    <img src="https://source.unsplash.com/50x50/?arrow" alt="Final">
+  </a>
+
+  <!--Sonido del vagon llegando-->
+  <audio id="background-audio" autoplay loop muted>
+    <source src="audio/la_llegada.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- Galería de imágenes desplazable -->
+  <div class="scrolling-row">
+    <div class="scrollable">
+      <img src="assets/22.png" class="scrolling-image">
+      <img src="assets/23.png" class="scrolling-image">
+      <img src="assets/24.png" class="scrolling-image">
+      <img src="assets/25.png" class="scrolling-image">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

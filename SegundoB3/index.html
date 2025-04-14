@@ -2,26 +2,33 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Video con Varias Imágenes Superpuestas</title>
+  <title>Respira y Sigue</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="video-container">
-  <video id="myVideo" autoplay>
-    <source src="assets/vagon_vacio_azul.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
-  </video>
+<!-- Video 1 -->
+<video id="video1" autoplay>
+  <source src="assets/puertas_cerrandose.mp4" type="video/mp4">
+  Tu navegador no soporta el video.
+</video>
 
-  <!-- Imágenes superpuestas -->
-  <img id="image1" class="overlay-image" src="assets/dialogo1.png" alt="Imagen 1">
-  <img id="image2" class="overlay-image" src="assets/dialogo2.png" alt="Imagen 2">
-  <img id="image3" class="overlay-image" src="assets/catarina.jpeg" alt="Imagen 3">
+<!-- Video 2 (oculto hasta que comience) -->
+<video id="video2" style="display: none;">
+  <source src="assets/mirada.mp4" type="video/mp4">
+  Tu navegador no soporta el video.
+</video>
 
-      <!-- Enlace convertido en imagen -->
-      <a id="link" href="/SegundoB1/index.html">
-        <img src="assets/ruido.png" alt="Ir al sitio">
-    </a>
+<!-- Imágenes superpuestas (solo para el segundo video) -->
+<img id="image1" class="overlay-image" src="assets/dialogo1.png" alt="Imagen 1">
+<img id="image2" class="overlay-image" src="assets/dialogo2.png" alt="Imagen 2">
+<img id="image3" class="overlay-image" src="assets/pez.jpeg" alt="Imagen 3">
+
+<!-- Enlace final con imagen -->
+<a id="link" href="../SegundoB4/index.html">
+  <img src="boton.png" alt="Ir al sitio" class="boton-imagen">
+</a>
+  
     <script src="script.js"></script>
 </body>
 </html>

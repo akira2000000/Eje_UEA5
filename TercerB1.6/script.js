@@ -4,14 +4,13 @@ const enlaceFinal = document.getElementById("enlace-final");
 
 // LINK SIG PAG
 scrollContainer.addEventListener("scroll", () => {
-    let scrollMaxX = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-    if (scrollContainer.scrollLeft >= scrollMaxX - 5) { 
-        enlaceFinal.style.display = "block"; // Muestra el enlace
+    if (scrollContainer.scrollLeft <= 2) {
+        // Estamos al final visual (izquierda)
+        enlaceFinal.style.display = "block";
     } else {
-        enlaceFinal.style.display = "none"; // Oculta el enlace
+        enlaceFinal.style.display = "none";
     }
 });
-
 // Detecta el scroll del mouse y lo convierte en horizontal
 scrollContainer.addEventListener("wheel", (event) => {
     event.preventDefault();
@@ -23,3 +22,16 @@ document.addEventListener("click", () => {
     audio.muted = false; // Quitar el muteo después de la interacción
     audio.play();
 }, { once: true });
+
+let autoScroll = setInterval(() => {
+    if (scrollContainer.scrollLeft <= 0) {
+      clearInterval(autoScroll); // Opcional: detiene el scroll cuando llega al final
+    } else {
+      scrollContainer.scrollLeft -= 1;
+    }
+  }, 10);
+
+  window.addEventListener("load", () => {
+    scrollContainer.scrollLeft = scrollContainer.scrollWidth;
+});
+

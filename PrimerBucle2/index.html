@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respira y Sigue</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <style>
-         /* Estilo del video de introducción */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respira y Sigue</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <style>
+    /* Estilo del video de introducción */
     #introVideo {
       position: fixed;
       top: 0;
@@ -22,98 +22,110 @@
       display: none;
     }
 
-        body {
-            background-image: url('assets/miradamapa.jpg'); /* Cambia la URL por tu imagen de fondo */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
 
-        .imagen {
-            width: 400px;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            position: absolute;
-        }
+    /* Estilos existentes */
+    #mainContent {
+      background-image: url('assets/miradamapa.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      color: white;
+    }
 
-        #miEnlace {
-            display: none;
-            font-size: 20px;
-            color: cyan;
-            text-decoration: none;
-            position: absolute;
-            top: 500px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .imagen {
+      width: 400px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      position: absolute;
+    }
 
-        /* Opcional: Estilos para la imagen del enlace */
-        #miEnlace img {
-            width: 300px;
-            transition: transform 0.3s;
-        }
-        #miEnlace img:hover {
-            transform: scale(1.1);
-        }
+    #miEnlace {
+      display: none;
+      font-size: 20px;
+      color: cyan;
+      text-decoration: none;
+      position: absolute;
+      top: 500px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        /*Audio*/
-        audio {
-            display: none; /* Oculta el reproductor de audio */
-        }
-    </style>
+    #miEnlace img {
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    #miEnlace img:hover {
+      transform: scale(1.1);
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-      <!-- Video a pantalla completa -->
-    <video id="introVideo" autoplay muted playsinline>
-        <source src="assets/puertas cerrandose.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento de video.
-    </video>
 
-      <!--Sonido del vagon llegando-->
+  <!-- Video a pantalla completa -->
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="assets/puertas cerrandose.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+  </video>
+
+  <!-- Contenido principal -->
+  <div id="mainContent">
     <audio id="background-audio" autoplay loop muted>
-        <source src="assets/audiometro3.mp3" type="audio/mpeg">
+      <source src="assets/audiometro3.mp3" type="audio/mpeg">
     </audio>
 
     <img id="img1" class="imagen" src="assets/d1.png" alt="Imagen 1">
     <img id="img2" class="imagen" src="assets/d2.png" alt="Imagen 2">
     <img id="img3" class="imagen" src="assets/d3.png" alt="Imagen 3">
 
-     <!-- Enlace convertido en imagen -->
-     <a id="miEnlace" href="../PrimerBucle3/index.html">
-        <img src="assets/linkkk.png" alt="Ir al sitio">
+    <a id="miEnlace" href="../PrimerBucle3/index.html">
+      <img src="assets/linkkk.png" alt="Ir al sitio">
     </a>
+  </div>
 
-    <script>
-        function fadeInOut(id, x, y, delayAppear, delayDisappear) {
-            let img = document.getElementById(id);
-            img.style.left = x + "px";
-            img.style.top = y + "px";
+  <script>
+    const video = document.getElementById('introVideo');
+    video.addEventListener('ended', () => {
+      video.style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
 
-            setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
-            setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
-        }
+      // Lanzar animaciones después del video
+      function fadeInOut(id, x, y, delayAppear, delayDisappear) {
+        let img = document.getElementById(id);
+        img.style.left = x + "px";
+        img.style.top = y + "px";
 
-        fadeInOut("img1", 900, 600, 1000, 5000);  
-        fadeInOut("img2", 900, 600, 4000, 8000);
-        fadeInOut("img3", 900, 600, 9000, 13000);
+        setTimeout(() => { img.style.opacity = "1"; }, delayAppear);
+        setTimeout(() => { img.style.opacity = "0"; }, delayDisappear);
+      }
 
-        // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
-        setTimeout(() => {
-            document.getElementById("miEnlace").style.display = "inline";
-        }, 13500);  
+      fadeInOut("img1", 900, 600, 1000, 5000);  
+      fadeInOut("img2", 900, 600, 4000, 8000);
+      fadeInOut("img3", 900, 600, 9000, 13000);
 
-        document.addEventListener("click", () => {
-            const audio = document.getElementById("background-audio");
-            audio.muted = false; // Quitar el muteo después de la interacción
-            audio.play();
-        }, { once: true });
-    
-    </script>
+      setTimeout(() => {
+        document.getElementById("miEnlace").style.display = "inline";
+      }, 13500);
+
+      document.addEventListener("click", () => {
+        const audio = document.getElementById("background-audio");
+        audio.muted = false;
+        audio.play();
+      }, { once: true });
+    });
+  </script>
 
 </body>
 </html>

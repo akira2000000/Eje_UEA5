@@ -1,0 +1,96 @@
+/* Reset de márgenes y ocultar el scroll vertical */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  /* Pantalla de introducción con video */
+  .intro-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease, transform 1s ease;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  /* Ajustes del video */
+  .intro-screen video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Ocultar pantalla de inicio después del video */
+  .intro-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+  
+  /* Contenedor principal */
+  .scrolling-row {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scrollable {
+    display: flex;
+    flex-direction: row-reverse; /* ¡Esto invierte el orden! */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100vw;
+    height: 100vh;
+    scrollbar-width: none;
+    cursor: grab;
+  }
+  
+  .scrollable::-webkit-scrollbar {
+    display: none;
+  }
+   
+  
+  /* Imágenes que ocupan toda la pantalla */
+  .scrolling-image {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    user-select: none;
+  }
+  
+  /*Link*/
+  
+  #enlace-final {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 30px; /* aparece al lado izquierdo */
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+  
+  #enlace-final img {
+    width: 300px; /* o el tamaño que prefieras */
+    height: auto; /* si quieres que mantenga proporción automática */
+    transition: transform 0.3s;
+  }
+  
+  
+  /* Efecto de escala cuando pasas el mouse */
+  #enlace-final img:hover {
+    transform: scale(1.2);
+  }
+  
+  /*Audio*/
+  audio {
+    display: none; /* Oculta el reproductor de audio */
+  }

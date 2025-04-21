@@ -31,7 +31,7 @@
   
   /*Dialogos*/
   .imagen {
-    width: 200px;
+    width: 100px;
     opacity: 0;
     animation: fadeInOut 8s forwards;
   }

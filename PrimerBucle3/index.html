@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Respira y Sigue</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
         body {
-            background-image: url('assets/gente.jpeg'); /* Cambia la URL por tu imagen de fondo */
+            background-image: url('assets/gente.jpg'); /* Cambia la URL por tu imagen de fondo */
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -18,7 +19,7 @@
         }
 
         .imagen {
-            width: 250px;
+            width: 400px;
             opacity: 0;
             transition: opacity 2s ease-in-out;
             position: absolute;
@@ -30,8 +31,8 @@
             color: cyan;
             text-decoration: none;
             position: absolute;
-            top: 400px;
-            left: 50%;
+            top: 500px;
+            left: 60%;
             transform: translate(-50%, -50%);
         }
 
@@ -57,12 +58,12 @@
     <source src="assets/audiometro4.mp3" type="audio/mpeg">
 </audio>
 
-    <img id="img1" class="imagen" src="assets/dialogo1.png" alt="Imagen 1">
-    <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
+    <img id="img1" class="imagen" src="assets/d4.png" alt="Imagen 1">
+    <img id="img2" class="imagen" src="assets/d5.png" alt="Imagen 2">
 
      <!-- Enlace convertido en imagen -->
      <a id="miEnlace" href="../SegundoB1/index.html">
-        <img src="assets/ruido.png" alt="Ir al sitio">
+        <img src="assets/linkkk.png" alt="Ir al sitio">
     </a>
 
     <script>
@@ -75,8 +76,8 @@
             setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
         }
 
-        fadeInOut("img1", 100, 100, 1000, 5000);  
-        fadeInOut("img2", 500, 300, 3000, 7000);
+        fadeInOut("img1", 1200, 600, 1000, 5000);  
+        fadeInOut("img2", 1200, 600, 3000, 7000);
 
         // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
         setTimeout(() => {

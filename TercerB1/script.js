@@ -1,5 +1,16 @@
 const introScreen = document.querySelector(".intro-screen");
 const scrollContainer = document.querySelector(".scrollable");
+const enlaceFinal = document.getElementById("enlace-final");
+
+// LINK SIG PAG
+scrollContainer.addEventListener("scroll", () => {
+    let scrollMaxX = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    if (scrollContainer.scrollLeft >= scrollMaxX - 5) { 
+        enlaceFinal.style.display = "block"; // Muestra el enlace
+    } else {
+        enlaceFinal.style.display = "none"; // Oculta el enlace
+    }
+});
 
 // Detecta el scroll del mouse y lo convierte en horizontal
 scrollContainer.addEventListener("wheel", (event) => {

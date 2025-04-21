@@ -75,24 +75,25 @@ body, html {
 #enlace-final {
   display: none;
   position: absolute;
-  bottom: 45%;
-  right: 10px;
-  transform: translateX(-1100%);
+  bottom: 70%;
+  right: 20px;
+  transform: translateX(-250%);
   padding: 10px;
   text-decoration: none;
-  border-radius: 5px;
   font-size: 18px;
+  /* Puedes agregar ajustes de tamaño aquí si lo necesitas */
 }
+
 #enlace-final img {
-  width: 80px; /* Ajusta el tamaño de la imagen */
-  height: auto; /* Mantiene la proporción */
-  border-radius: 50%; /* Hace que la imagen sea redonda */
-  transition: transform 0.3s ease; /* Efecto suave */
+  width: 300px; /* o el tamaño que prefieras */
+  height: auto; /* si quieres que mantenga proporción automática */
+  transition: transform 0.3s;
 }
+
 
 /* Efecto de escala cuando pasas el mouse */
 #enlace-final img:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 /*Audio*/

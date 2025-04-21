@@ -56,18 +56,32 @@ body, html {
     user-select: none;
   }
   
-  .enlace {
-    position: absolute;
-    top: 50px; /* Ajusta según necesites */
-    left: 200px; /* Ajusta la posición horizontal */
-    z-index: 10;
-  }
+/*Link*/
 
-  .enlace img {
-    width: 100px; /* Tamaño de la imagen del enlace */
-    cursor: pointer;
-  }
-  
+#enlace-final {
+  display: none;
+  position: absolute;
+  bottom: 70%;
+  right: 20px;
+  transform: translateX(-250%);
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  /* Puedes agregar ajustes de tamaño aquí si lo necesitas */
+}
+
+#enlace-final img {
+  width: 300px; /* o el tamaño que prefieras */
+  height: auto; /* si quieres que mantenga proporción automática */
+  transition: transform 0.3s;
+}
+
+
+/* Efecto de escala cuando pasas el mouse */
+#enlace-final img:hover {
+  transform: scale(1.2);
+}
+
   /*Audio*/
   audio {
     display: none; /* Oculta el reproductor de audio */

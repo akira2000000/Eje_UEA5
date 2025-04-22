@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video con imagen al final</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+    }
+
+    #fullscreenImage,
+    #fullscreenVideo video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    #fullscreenVideo {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+    }
+
+    #finalLink {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    #finalLink img {
+      width: 200px; /* ajusta el tamaño como quieras */
+      height: auto;
+    }
+
+    #finalLink img:hover {
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+<body>
+ <!-- Imagen que ocupa toda la pantalla -->
+ <img id="fullscreenImage" src="assets/entrada4.png" alt="Haz clic para ver el video"/>
+
+ <!-- Video a pantalla completa -->
+ <div id="fullscreenVideo">
+   <video id="video" src="assets/vagon de mujeres.mp4" autoplay muted></video>
+
+   <!-- Enlace final con imagen DENTRO del contenedor fullscreen -->
+   <a id="finalLink" href="https://tusitio.com" target="_blank">
+     <img src="boton-final.png" alt="Ir al sitio" />
+   </a>
+ </div>
+
+ <script>
+   const image = document.getElementById('fullscreenImage');
+   const videoContainer = document.getElementById('fullscreenVideo');
+   const video = document.getElementById('video');
+   const finalLink = document.getElementById('finalLink');
+
+   image.addEventListener('click', () => {
+     image.style.display = 'none';
+     videoContainer.style.display = 'block';
+
+     if (videoContainer.requestFullscreen) {
+       videoContainer.requestFullscreen();
+     } else if (videoContainer.webkitRequestFullscreen) {
+       videoContainer.webkitRequestFullscreen();
+     } else if (videoContainer.msRequestFullscreen) {
+       videoContainer.msRequestFullscreen();
+     }
+
+     video.play();
+   });
+
+   video.addEventListener('ended', () => {
+     finalLink.style.display = 'block';
+   });
+ </script>
+</body>
+</html>

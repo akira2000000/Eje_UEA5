@@ -53,13 +53,13 @@
       color: cyan;
       text-decoration: none;
       position: absolute;
-      top: 500px;
-      left: 50%;
+      top: 800px;
+      left: 57%;
       transform: translate(-50%, -50%);
     }
 
     #miEnlace img {
-      width: 300px;
+      width: 400px;
       transition: transform 0.3s;
     }
 
@@ -88,10 +88,9 @@
 
     <img id="img1" class="imagen" src="assets/d1.png" alt="Imagen 1">
     <img id="img2" class="imagen" src="assets/d2.png" alt="Imagen 2">
-    <img id="img3" class="imagen" src="assets/d3.png" alt="Imagen 3">
 
     <a id="miEnlace" href="../PrimerBucle3/index.html">
-      <img src="assets/linkkk.png" alt="Ir al sitio">
+      <img src="assets/d3.png" alt="Ir al sitio">
     </a>
   </div>
 
@@ -113,11 +112,10 @@
 
       fadeInOut("img1", 900, 600, 1000, 5000);  
       fadeInOut("img2", 900, 600, 4000, 8000);
-      fadeInOut("img3", 900, 600, 9000, 13000);
 
       setTimeout(() => {
         document.getElementById("miEnlace").style.display = "inline";
-      }, 13500);
+      }, 9000);
 
       document.addEventListener("click", () => {
         const audio = document.getElementById("background-audio");

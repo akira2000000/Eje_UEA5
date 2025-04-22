@@ -1,98 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respira y Sigue</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <style>
-        body {
-            background-image: url('assets/30.png'); /* Cambia la URL por tu imagen de fondo */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Respira y Sigue</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      background-image: url('assets/29.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
 
-        .imagen {
-            width: 250px;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            position: absolute;
-        }
+    video#introVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 9999;
+    }
 
-        #miEnlace {
-            display: none;
-            font-size: 20px;
-            color: cyan;
-            text-decoration: none;
-            position: absolute;
-            top: 400px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .imagen {
+      width: 250px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      position: absolute;
+    }
 
-        /* Opcional: Estilos para la imagen del enlace */
-        #miEnlace img {
-            width: 150px;
-            transition: transform 0.3s;
-        }
-        #miEnlace img:hover {
-            transform: scale(1.1);
-        }
+    #miEnlace {
+      display: none;
+      font-size: 20px;
+      color: cyan;
+      text-decoration: none;
+      position: absolute;
+      top: 400px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        /*Audio*/
-        audio {
-            display: none; /* Oculta el reproductor de audio */
-        }
-    </style>
+    #miEnlace img {
+      width: 150px;
+      transition: transform 0.3s;
+    }
+
+    #miEnlace img:hover {
+      transform: scale(1.1);
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-      <!--Sonido del vagon llegando-->
-    <audio id="background-audio" autoplay loop muted>
-        <source src="assets/audiometro3.mp3" type="audio/mpeg">
-    </audio>
+  <!-- Video a pantalla completa -->
+  <video id="introVideo" autoplay muted>
+    <source src="assets/pasillo rosario.mp4" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
 
-    <img id="img1" class="imagen" src="assets/dialogo.png" alt="Imagen 1">
-    <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
-    <img id="img3" class="imagen" src="assets/dialogo3.png" alt="Imagen 3">
+  <!-- Audio de fondo -->
+  <audio id="background-audio" autoplay loop muted>
+    <source src="assets/audiometro3.mp3" type="audio/mpeg">
+  </audio>
 
-     <!-- Enlace convertido en imagen -->
-     <a id="miEnlace" href="../TercerB3/index.html">
-        <img src="assets/link.png" alt="Ir al sitio">
-    </a>
+  <!-- Imágenes -->
+  <img id="img1" class="imagen" src="assets/dialogo.png" alt="Imagen 1">
+  <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
+  <img id="img3" class="imagen" src="assets/dialogo3.png" alt="Imagen 3">
 
-    <script>
-        function fadeInOut(id, x, y, delayAppear, delayDisappear) {
-            let img = document.getElementById(id);
-            img.style.left = x + "px";
-            img.style.top = y + "px";
+  <!-- Enlace final -->
+  <a id="miEnlace" href="../TercerB3/index.html">
+    <img src="assets/link.png" alt="Ir al sitio">
+  </a>
 
-            setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
-            setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
-        }
+  <script>
+    const video = document.getElementById("introVideo");
+    const audio = document.getElementById("background-audio");
 
-        fadeInOut("img1", 100, 100, 500, 2000);  
-        fadeInOut("img2", 500, 300, 1500, 3500);
-        fadeInOut("img3", 900, 500, 2500, 5000);
+    // Reproducir sonido al hacer clic (por restricciones del navegador)
+    document.addEventListener("click", () => {
+      audio.muted = false;
+      audio.play();
+    }, { once: true });
 
-        // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
-        setTimeout(() => {
-            document.getElementById("miEnlace").style.display = "inline";
-        }, 8000);  
+    // Al terminar el video, ocultar y ejecutar el resto
+    video.addEventListener("ended", () => {
+      video.style.display = "none";
 
-        document.addEventListener("click", () => {
-            const audio = document.getElementById("background-audio");
-            audio.muted = false; // Quitar el muteo después de la interacción
-            audio.play();
-        }, { once: true });
-    
-    </script>
+      function fadeInOut(id, x, y, delayAppear, delayDisappear) {
+        let img = document.getElementById(id);
+        img.style.left = x + "px";
+        img.style.top = y + "px";
+
+        setTimeout(() => { img.style.opacity = "1"; }, delayAppear);
+        setTimeout(() => { img.style.opacity = "0"; }, delayDisappear);
+      }
+
+      fadeInOut("img1", 100, 100, 500, 2000);
+      fadeInOut("img2", 500, 300, 1500, 3500);
+      fadeInOut("img3", 900, 500, 2500, 5000);
+
+      setTimeout(() => {
+        document.getElementById("miEnlace").style.display = "inline";
+      }, 8000);
+    });
+  </script>
 
 </body>
 </html>

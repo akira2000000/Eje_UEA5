@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    overflow: hidden;
+    background-color: black;
+  }
+  video, .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+  .image-container {
+    display: none;
+  }
+  .image-container a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /*Dialogos*/
+  .imagen {
+    width: 200px;
+    opacity: 0;
+    animation: fadeInOut 8s forwards;
+  }
+  
+  @keyframes fadeInOut {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+  }
+  
+  /*Audio*/
+  audio {
+    display: none; /* Oculta el reproductor de audio */
+  }

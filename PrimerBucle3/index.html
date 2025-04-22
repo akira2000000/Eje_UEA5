@@ -31,14 +31,14 @@
             color: cyan;
             text-decoration: none;
             position: absolute;
-            top: 500px;
-            left: 60%;
+            top: 800px;
+            left: 74%;
             transform: translate(-50%, -50%);
         }
 
         /* Opcional: Estilos para la imagen del enlace */
         #miEnlace img {
-            width: 150px;
+            width: 400px;
             transition: transform 0.3s;
         }
         #miEnlace img:hover {
@@ -63,7 +63,7 @@
 
      <!-- Enlace convertido en imagen -->
      <a id="miEnlace" href="../SegundoB1/index.html">
-        <img src="assets/linkkk.png" alt="Ir al sitio">
+        <img src="assets/d5.5.png" alt="Ir al sitio">
     </a>
 
     <script>
@@ -77,12 +77,12 @@
         }
 
         fadeInOut("img1", 1200, 600, 1000, 5000);  
-        fadeInOut("img2", 1200, 600, 3000, 7000);
+        fadeInOut("img2", 1200, 600, 4000, 8000);
 
         // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
         setTimeout(() => {
             document.getElementById("miEnlace").style.display = "inline";
-        }, 11000);
+        }, 9000);
         
         //Audio
         document.addEventListener("click", () => {

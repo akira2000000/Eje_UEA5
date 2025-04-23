@@ -19,34 +19,37 @@
         }
 
         .imagen {
-            width: 400px;
+            max-width: 30vw;
+            height: auto;
             opacity: 0;
             transition: opacity 2s ease-in-out;
             position: absolute;
+            transform: translate(-50%, -50%); /* centra desde el punto medio */
         }
 
         #miEnlace {
             display: none;
-            font-size: 20px;
+            font-size: 3vw;
             color: cyan;
             text-decoration: none;
             position: absolute;
-            top: 800px;
-            left: 74%;
+            top: 65vh;         /* posición vertical relativa a la pantalla */
+            left: 60vw;        /* posición horizontal centrada */
             transform: translate(-50%, -50%);
         }
 
-        /* Opcional: Estilos para la imagen del enlace */
         #miEnlace img {
-            width: 400px;
+            max-width: 30vw;
+            height: auto;
             transition: transform 0.3s;
         }
+
         #miEnlace img:hover {
             transform: scale(1.1);
         }
         /*Audio*/
         audio {
-        display: none; /* Oculta el reproductor de audio */
+            display: none; /* Oculta el reproductor de audio */
         }
     </style>
 </head>
@@ -55,7 +58,7 @@
 
   <!--Sonido del vagon llegando-->
   <audio id="background-audio" autoplay loop muted>
-    <source src="assets/audiometro4.mp3" type="audio/mpeg">
+    <source src="assets/primerb2.mp3" type="audio/mpeg">
 </audio>
 
     <img id="img1" class="imagen" src="assets/d4.png" alt="Imagen 1">
@@ -67,17 +70,17 @@
     </a>
 
     <script>
-        function fadeInOut(id, x, y, delayAppear, delayDisappear) {
+        function fadeInOut(id, xPercent, yPercent, delayAppear, delayDisappear) {
             let img = document.getElementById(id);
-            img.style.left = x + "px";
-            img.style.top = y + "px";
+            img.style.left = xPercent + "vw";
+            img.style.top = yPercent + "vh";
 
             setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
             setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
         }
 
-        fadeInOut("img1", 1200, 600, 1000, 5000);  
-        fadeInOut("img2", 1200, 600, 4000, 8000);
+        fadeInOut("img1", 60, 70, 1000, 5000);  // 60vw y 70vh
+        fadeInOut("img2", 60, 70, 4000, 8000);
 
         // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
         setTimeout(() => {

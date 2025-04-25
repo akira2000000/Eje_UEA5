@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .ventana {
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      background: lightblue;
+      border: 1px solid #000;
+      padding: 10px;
+      display: none;
+    }
+  </style>
+  <script>
+    function crearVentanas() {
+      for (let i = 0; i < 5; i++) {
+        let div = document.createElement("div");
+        div.className = "ventana";
+        div.style.left = `${Math.random() * 500}px`;
+        div.style.top = `${Math.random() * 300}px`;
+        div.innerText = "¡Hola!";
+        div.style.display = "block";
+        document.body.appendChild(div);
+      }
+    }
+  </script>
+</head>
+<body>
+  <button onclick="crearVentanas()">Crear ventanas</button>
+</body>
+</html>

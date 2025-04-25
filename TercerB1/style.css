@@ -57,29 +57,25 @@ body, html {
   }
   
 /*Link*/
-
 #enlace-final {
   display: none;
-  position: absolute;
-  bottom: 70%;
-  right: 20px;
-  transform: translateX(-250%);
-  padding: 10px;
+  font-size: 3vw;
+  color: cyan;
   text-decoration: none;
-  font-size: 18px;
-  /* Puedes agregar ajustes de tamaño aquí si lo necesitas */
+  position: absolute;
+  top: 25vh;         /* posición vertical relativa a la pantalla */
+  left: 30vw;        /* posición horizontal centrada */
+  transform: translate(-50%, -50%);
 }
 
 #enlace-final img {
-  width: 300px; /* o el tamaño que prefieras */
-  height: auto; /* si quieres que mantenga proporción automática */
+  max-width: 28vw;
+  height: auto;
   transition: transform 0.3s;
 }
 
-
-/* Efecto de escala cuando pasas el mouse */
 #enlace-final img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
   /*Audio*/

@@ -19,31 +19,34 @@
         }
 
         .imagen {
-            width: 250px;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            position: absolute;
-        }
+      max-width: 25vw;
+      height: auto;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      position: absolute;
+      transform: translate(-50%, -50%); /* centra desde el punto medio */
+    }
 
-        #miEnlace {
-            display: none;
-            font-size: 20px;
-            color: cyan;
-            text-decoration: none;
-            position: absolute;
-            top: 400px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    #miEnlace {
+      display: none;
+      font-size: 3vw;
+      color: cyan;
+      text-decoration: none;
+      position: absolute;
+      top: 65vh;         /* posición vertical relativa a la pantalla */
+      left: 60vw;        /* posición horizontal centrada */
+      transform: translate(-50%, -50%);
+    }
 
-        /* Opcional: Estilos para la imagen del enlace */
-        #miEnlace img {
-            width: 150px;
-            transition: transform 0.3s;
-        }
-        #miEnlace img:hover {
-            transform: scale(1.1);
-        }
+    #miEnlace img {
+      max-width: 25vw;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    #miEnlace img:hover {
+      transform: scale(1.1);
+    }
 
         /*Audio*/
         audio {
@@ -55,36 +58,36 @@
 
       <!--Sonido del vagon llegando-->
     <audio id="background-audio" autoplay loop muted>
-        <source src="assets/audiometro3.mp3" type="audio/mpeg">
+        <source src="assets/corredor7.mp3" type="audio/mpeg">
     </audio>
 
-    <img id="img1" class="imagen" src="assets/dialogo.png" alt="Imagen 1">
-    <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
-    <img id="img3" class="imagen" src="assets/dialogo3.png" alt="Imagen 3">
+    <img id="img1" class="imagen" src="assets/26.png" alt="Imagen 1">
+    <img id="img2" class="imagen" src="assets/37.png" alt="Imagen 2">
+    <img id="img3" class="imagen" src="assets/39.png" alt="Imagen 3">
 
      <!-- Enlace convertido en imagen -->
      <a id="miEnlace" href="../CuartoB1/index.html">
-        <img src="assets/link.png" alt="Ir al sitio">
+        <img src="assets/4.png" alt="Ir al sitio">
     </a>
 
     <script>
-        function fadeInOut(id, x, y, delayAppear, delayDisappear) {
-            let img = document.getElementById(id);
-            img.style.left = x + "px";
-            img.style.top = y + "px";
+                function fadeInOut(id, xPercent, yPercent, delayAppear, delayDisappear) {
+      let img = document.getElementById(id);
+      img.style.left = xPercent + "vw";
+      img.style.top = yPercent + "vh";
 
             setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
             setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
-        }
+          }
 
-        fadeInOut("img1", 100, 100, 1000, 5000);  
-        fadeInOut("img2", 500, 300, 3000, 7000);
-        fadeInOut("img3", 900, 500, 5000, 9000);
+        fadeInOut("img1", 60, 70, 1000, 2500);  // 60vw y 70vh
+        fadeInOut("img2", 60, 70, 3000, 5000);
+        fadeInOut("img3", 60, 70, 5500, 7000);
 
         // Mostrar el enlace después de que la última imagen desaparece (9s + 2s de fade)
         setTimeout(() => {
             document.getElementById("miEnlace").style.display = "inline";
-        }, 11000);  
+        }, 7500);   
 
         document.addEventListener("click", () => {
             const audio = document.getElementById("background-audio");

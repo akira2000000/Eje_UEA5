@@ -19,36 +19,29 @@
       font-family: Arial, sans-serif;
     }
 
-    video#introVideo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 9999;
-    }
-
     .imagen {
-      width: 250px;
+      max-width: 25vw;
+      height: auto;
       opacity: 0;
-      transition: opacity 2s ease-in-out;
+      transition: opacity 1s ease-in-out;
       position: absolute;
+      transform: translate(-50%, -50%); /* centra desde el punto medio */
     }
 
     #miEnlace {
       display: none;
-      font-size: 20px;
+      font-size: 3vw;
       color: cyan;
       text-decoration: none;
       position: absolute;
-      top: 400px;
-      left: 50%;
+      top: 65vh;         /* posición vertical relativa a la pantalla */
+      left: 60vw;        /* posición horizontal centrada */
       transform: translate(-50%, -50%);
     }
 
     #miEnlace img {
-      width: 150px;
+      max-width: 25vw;
+      height: auto;
       transition: transform 0.3s;
     }
 
@@ -62,30 +55,21 @@
   </style>
 </head>
 <body>
-
-  <!-- Video a pantalla completa -->
-  <video id="introVideo" autoplay muted>
-    <source src="assets/pasillo rosario.mp4" type="video/mp4" />
-    Tu navegador no soporta video HTML5.
-  </video>
-
   <!-- Audio de fondo -->
   <audio id="background-audio" autoplay loop muted>
-    <source src="assets/audiometro3.mp3" type="audio/mpeg">
+    <source src="assets/corredor1.mp3" type="audio/mpeg">
   </audio>
 
   <!-- Imágenes -->
-  <img id="img1" class="imagen" src="assets/dialogo.png" alt="Imagen 1">
-  <img id="img2" class="imagen" src="assets/dialogo2.png" alt="Imagen 2">
-  <img id="img3" class="imagen" src="assets/dialogo3.png" alt="Imagen 3">
+  <img id="img1" class="imagen" src="assets/1.png" alt="Imagen 1">
+  <img id="img2" class="imagen" src="assets/25.png" alt="Imagen 2">
 
   <!-- Enlace final -->
   <a id="miEnlace" href="../TercerB3/index.html">
-    <img src="assets/link.png" alt="Ir al sitio">
+    <img src="assets/28.png" alt="Ir al sitio">
   </a>
 
   <script>
-    const video = document.getElementById("introVideo");
     const audio = document.getElementById("background-audio");
 
     // Reproducir sonido al hacer clic (por restricciones del navegador)
@@ -94,27 +78,21 @@
       audio.play();
     }, { once: true });
 
-    // Al terminar el video, ocultar y ejecutar el resto
-    video.addEventListener("ended", () => {
-      video.style.display = "none";
+    function fadeInOut(id, xPercent, yPercent, delayAppear, delayDisappear) {
+      let img = document.getElementById(id);
+      img.style.left = xPercent + "vw";
+      img.style.top = yPercent + "vh";
 
-      function fadeInOut(id, x, y, delayAppear, delayDisappear) {
-        let img = document.getElementById(id);
-        img.style.left = x + "px";
-        img.style.top = y + "px";
+            setTimeout(() => { img.style.opacity = "1"; }, delayAppear); // Aparece
+            setTimeout(() => { img.style.opacity = "0"; }, delayDisappear); // Desaparece
+          }
 
-        setTimeout(() => { img.style.opacity = "1"; }, delayAppear);
-        setTimeout(() => { img.style.opacity = "0"; }, delayDisappear);
-      }
-
-      fadeInOut("img1", 100, 100, 500, 2000);
-      fadeInOut("img2", 500, 300, 1500, 3500);
-      fadeInOut("img3", 900, 500, 2500, 5000);
+        fadeInOut("img1", 60, 70, 1000, 4000);  // 60vw y 70vh
+        fadeInOut("img2", 60, 70, 5000, 7000);
 
       setTimeout(() => {
         document.getElementById("miEnlace").style.display = "inline";
       }, 8000);
-    });
   </script>
 
 </body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .ventana {
+      position: absolute;
+      width: 220px;
+      height: 170px;
+      background-color: #fff;
+      border: 2px solid #444;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      padding: 10px;
+      z-index: 100;
+      display: none;
+      transition: opacity 0.2s;
+    }
+
+    .cerrar {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .ventana img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  window.onload = function() {
+    const totalVentanas = 5;
+    const delayEntreVentanas = 300; // milisegundos
+    let contador = 0;
+
+    const imagenes = [
+      "https://via.placeholder.com/200x120?text=Imagen+1",
+      "https://via.placeholder.com/200x120?text=Imagen+2",
+      "https://via.placeholder.com/200x120?text=Imagen+3",
+      "https://via.placeholder.com/200x120?text=Imagen+4",
+      "https://via.placeholder.com/200x120?text=Imagen+5"
+    ];
+
+    function crearVentana(numero) {
+      let ventana = document.createElement("div");
+      ventana.className = "ventana";
+      ventana.style.left = `${Math.random() * 500}px`;
+      ventana.style.top = `${Math.random() * 300}px`;
+      ventana.innerHTML = `
+        <div class="cerrar" onclick="this.parentElement.remove()">×</div>
+        <img src="${imagenes[numero]}" alt="imagen ${numero + 1}">
+      `;
+      document.body.appendChild(ventana);
+      ventana.style.display = "block";
+      ventana.style.opacity = 1;
+    }
+
+    function lanzarVentanasUnaPorUna() {
+      if (contador < totalVentanas) {
+        crearVentana(contador);
+        contador++;
+        setTimeout(lanzarVentanasUnaPorUna, delayEntreVentanas);
+      }
+    }
+
+    setTimeout(lanzarVentanasUnaPorUna, 500); // pequeño suspenso antes de iniciar
+  };
+</script>
+
+</body>
+</html>

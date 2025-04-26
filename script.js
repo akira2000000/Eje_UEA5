@@ -39,6 +39,6 @@ document.addEventListener("click", () => {
 
 //trigger warning
 console.log("holaa consola");
-window.alert("ADVERTENCIA: Este contenido puede ser sensible. Para tener una mejor experiencia le recomendamos usar la pantalla completa (F11)");
+window.alert("ADVERTENCIA: Este contenido puede ser sensible. Para tener una mejor experiencia le recomendamos usar la pantalla completa (F11). Y dar doble click al iniciar cada página.");
 let nombre = "anggg";
 document.getElementById("nombre").innerHTML=nombre;
